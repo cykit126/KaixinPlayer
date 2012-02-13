@@ -1,0 +1,6 @@
+KaixinPlayer/src/obj/*
+kaixinPlayer/src/libs/*
+.DS_Store
+KaixinPlayerAndroid/libs/*
+KaixinPlayerAndroid/bin/*
+KaixinPlayerAndroid/gen/*

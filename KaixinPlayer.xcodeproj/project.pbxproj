@@ -1,0 +1,482 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3B0B1C5D14D8D4C5005294E6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B1C5B14D8D4C5005294E6 /* InfoPlist.strings */; };
+		3B0B1C5F14D8D4C5005294E6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B0B1C5E14D8D4C5005294E6 /* main.m */; };
+		3B0B1C6314D8D4C5005294E6 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B1C6114D8D4C5005294E6 /* Credits.rtf */; };
+		3B0B1C6914D8D4C5005294E6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3B0B1C6714D8D4C5005294E6 /* MainMenu.xib */; };
+		3B1148C914DA823B008FD50D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B1148C814DA823B008FD50D /* Cocoa.framework */; };
+		3B30946C14E8A95E002300A3 /* com_kaixindev_kxplayer_JNITest.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B30946B14E8A95E002300A3 /* com_kaixindev_kxplayer_JNITest.c */; };
+		3B421B3814E0C01E00D141C6 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B421B3714E0C01E00D141C6 /* CoreVideo.framework */; };
+		3B421B3A14E0C0F600D141C6 /* VideoDecodeAcceleration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B421B3914E0C0F600D141C6 /* VideoDecodeAcceleration.framework */; };
+		3B86B56614E2399C00367467 /* device_android.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B86B56514E2399B00367467 /* device_android.c */; };
+		3B86B56D14E2475200367467 /* boot.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B86B56814E2475200367467 /* boot.c */; };
+		3B86B56E14E2475200367467 /* com_kaixindev_kxplayer_Agent.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B86B56914E2475200367467 /* com_kaixindev_kxplayer_Agent.c */; };
+		3B86B56F14E2475200367467 /* com_kaixindev_kxplayer_Device.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B86B56B14E2475200367467 /* com_kaixindev_kxplayer_Device.c */; };
+		3B9F5AC414DE81410098671F /* CoreAudio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5AC314DE81410098671F /* CoreAudio.framework */; };
+		3B9F5AC614DE81500098671F /* AudioUnit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5AC514DE814F0098671F /* AudioUnit.framework */; };
+		3B9F5AC814DE81600098671F /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5AC714DE81600098671F /* AudioToolbox.framework */; };
+		3B9F5ACA14DE81990098671F /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5AC914DE81990098671F /* Carbon.framework */; };
+		3B9F5ACC14DE81D50098671F /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5ACB14DE81D50098671F /* CoreFoundation.framework */; };
+		3B9F5ACE14DE82490098671F /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5ACD14DE82480098671F /* IOKit.framework */; };
+		3B9F5AD014DE826C0098671F /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B9F5ACF14DE826C0098671F /* OpenGL.framework */; };
+		3B9F901614DFB554007CC38B /* player.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F901514DFB554007CC38B /* player.c */; };
+		3B9F901814DFB6B7007CC38B /* agent.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F901714DFB6B7007CC38B /* agent.c */; };
+		3B9F901D14DFD9EE007CC38B /* device_SDL.c in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F901C14DFD9EE007CC38B /* device_SDL.c */; };
+		3B9F901F14DFDA18007CC38B /* device.h in Sources */ = {isa = PBXBuildFile; fileRef = 3B9F901E14DFDA18007CC38B /* device.h */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3B0B1C4E14D8D4C5005294E6 /* KaixinPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KaixinPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B0B1C5214D8D4C5005294E6 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		3B0B1C5514D8D4C5005294E6 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		3B0B1C5614D8D4C5005294E6 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		3B0B1C5714D8D4C5005294E6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		3B0B1C5A14D8D4C5005294E6 /* KaixinPlayer-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "KaixinPlayer-Info.plist"; sourceTree = "<group>"; };
+		3B0B1C5C14D8D4C5005294E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		3B0B1C5E14D8D4C5005294E6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3B0B1C6014D8D4C5005294E6 /* KaixinPlayer-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "KaixinPlayer-Prefix.pch"; sourceTree = "<group>"; };
+		3B0B1C6214D8D4C5005294E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		3B0B1C6814D8D4C5005294E6 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		3B1148C814DA823B008FD50D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Cocoa.framework; sourceTree = DEVELOPER_DIR; };
+		3B30946914E8A912002300A3 /* com_kaixindev_kxplayer_JNITest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = com_kaixindev_kxplayer_JNITest.h; path = src/jni/com_kaixindev_kxplayer_JNITest.h; sourceTree = "<group>"; };
+		3B30946B14E8A95E002300A3 /* com_kaixindev_kxplayer_JNITest.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = com_kaixindev_kxplayer_JNITest.c; path = src/jni/com_kaixindev_kxplayer_JNITest.c; sourceTree = "<group>"; };
+		3B421B3714E0C01E00D141C6 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreVideo.framework; sourceTree = DEVELOPER_DIR; };
+		3B421B3914E0C0F600D141C6 /* VideoDecodeAcceleration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoDecodeAcceleration.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/VideoDecodeAcceleration.framework; sourceTree = DEVELOPER_DIR; };
+		3B86B56514E2399B00367467 /* device_android.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device_android.c; path = src/device_android.c; sourceTree = "<group>"; };
+		3B86B56714E244D200367467 /* android.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = android.h; path = src/android.h; sourceTree = "<group>"; };
+		3B86B56814E2475200367467 /* boot.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = boot.c; path = src/jni/boot.c; sourceTree = "<group>"; };
+		3B86B56914E2475200367467 /* com_kaixindev_kxplayer_Agent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = com_kaixindev_kxplayer_Agent.c; path = src/jni/com_kaixindev_kxplayer_Agent.c; sourceTree = "<group>"; };
+		3B86B56A14E2475200367467 /* com_kaixindev_kxplayer_Agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = com_kaixindev_kxplayer_Agent.h; path = src/jni/com_kaixindev_kxplayer_Agent.h; sourceTree = "<group>"; };
+		3B86B56B14E2475200367467 /* com_kaixindev_kxplayer_Device.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = com_kaixindev_kxplayer_Device.c; path = src/jni/com_kaixindev_kxplayer_Device.c; sourceTree = "<group>"; };
+		3B86B56C14E2475200367467 /* com_kaixindev_kxplayer_Device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = com_kaixindev_kxplayer_Device.h; path = src/jni/com_kaixindev_kxplayer_Device.h; sourceTree = "<group>"; };
+		3B86B57014E26BCD00367467 /* boot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = boot.h; path = src/jni/boot.h; sourceTree = "<group>"; };
+		3B9F5AC314DE81410098671F /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreAudio.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F5AC514DE814F0098671F /* AudioUnit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioUnit.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/AudioUnit.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F5AC714DE81600098671F /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/AudioToolbox.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F5AC914DE81990098671F /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/Carbon.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F5ACB14DE81D50098671F /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/CoreFoundation.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F5ACD14DE82480098671F /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/IOKit.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F5ACF14DE826C0098671F /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = SDKs/MacOSX10.7.sdk/System/Library/Frameworks/OpenGL.framework; sourceTree = DEVELOPER_DIR; };
+		3B9F901514DFB554007CC38B /* player.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = player.c; path = src/player.c; sourceTree = "<group>"; };
+		3B9F901714DFB6B7007CC38B /* agent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = agent.c; path = src/agent.c; sourceTree = "<group>"; };
+		3B9F901A14DFB6ED007CC38B /* agent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = agent.h; path = src/api/kxplayer/agent.h; sourceTree = "<group>"; };
+		3B9F901B14DFB6ED007CC38B /* player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = player.h; path = src/api/kxplayer/player.h; sourceTree = "<group>"; };
+		3B9F901C14DFD9EE007CC38B /* device_SDL.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = device_SDL.c; path = src/device_SDL.c; sourceTree = "<group>"; };
+		3B9F901E14DFDA18007CC38B /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = device.h; path = src/api/kxplayer/device.h; sourceTree = "<group>"; };
+		3B9F902014DFDDF4007CC38B /* device.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = device.h; path = src/device.h; sourceTree = "<group>"; };
+		3B9F902314DFDE9A007CC38B /* config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = config.h; path = src/api/kxplayer/config.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3B0B1C4B14D8D4C5005294E6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B421B3A14E0C0F600D141C6 /* VideoDecodeAcceleration.framework in Frameworks */,
+				3B421B3814E0C01E00D141C6 /* CoreVideo.framework in Frameworks */,
+				3B9F5AD014DE826C0098671F /* OpenGL.framework in Frameworks */,
+				3B9F5ACE14DE82490098671F /* IOKit.framework in Frameworks */,
+				3B9F5ACC14DE81D50098671F /* CoreFoundation.framework in Frameworks */,
+				3B9F5ACA14DE81990098671F /* Carbon.framework in Frameworks */,
+				3B9F5AC814DE81600098671F /* AudioToolbox.framework in Frameworks */,
+				3B9F5AC614DE81500098671F /* AudioUnit.framework in Frameworks */,
+				3B9F5AC414DE81410098671F /* CoreAudio.framework in Frameworks */,
+				3B1148C914DA823B008FD50D /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3B0B1C4114D8D46D005294E6 = {
+			isa = PBXGroup;
+			children = (
+				3B421B3914E0C0F600D141C6 /* VideoDecodeAcceleration.framework */,
+				3B421B3714E0C01E00D141C6 /* CoreVideo.framework */,
+				3B9F5ACF14DE826C0098671F /* OpenGL.framework */,
+				3B9F5ACD14DE82480098671F /* IOKit.framework */,
+				3B9F5ACB14DE81D50098671F /* CoreFoundation.framework */,
+				3B9F5AC914DE81990098671F /* Carbon.framework */,
+				3B9F5AC714DE81600098671F /* AudioToolbox.framework */,
+				3B9F5AC514DE814F0098671F /* AudioUnit.framework */,
+				3B9F5AC314DE81410098671F /* CoreAudio.framework */,
+				3B1148C814DA823B008FD50D /* Cocoa.framework */,
+				3B0B1C5814D8D4C5005294E6 /* KaixinPlayer */,
+				3B0B1C5114D8D4C5005294E6 /* Frameworks */,
+				3B0B1C4F14D8D4C5005294E6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3B0B1C4F14D8D4C5005294E6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3B0B1C4E14D8D4C5005294E6 /* KaixinPlayer.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3B0B1C5114D8D4C5005294E6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B0B1C5214D8D4C5005294E6 /* Cocoa.framework */,
+				3B0B1C5414D8D4C5005294E6 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3B0B1C5414D8D4C5005294E6 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3B0B1C5514D8D4C5005294E6 /* AppKit.framework */,
+				3B0B1C5614D8D4C5005294E6 /* CoreData.framework */,
+				3B0B1C5714D8D4C5005294E6 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		3B0B1C5814D8D4C5005294E6 /* KaixinPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				3B0B1C6714D8D4C5005294E6 /* MainMenu.xib */,
+				3B0B1C5914D8D4C5005294E6 /* Supporting Files */,
+			);
+			path = KaixinPlayer;
+			sourceTree = "<group>";
+		};
+		3B0B1C5914D8D4C5005294E6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3B9F901014DFB428007CC38B /* src */,
+				3B0B1C5A14D8D4C5005294E6 /* KaixinPlayer-Info.plist */,
+				3B0B1C5B14D8D4C5005294E6 /* InfoPlist.strings */,
+				3B0B1C5E14D8D4C5005294E6 /* main.m */,
+				3B0B1C6014D8D4C5005294E6 /* KaixinPlayer-Prefix.pch */,
+				3B0B1C6114D8D4C5005294E6 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3B86B56314E212FC00367467 /* jni */ = {
+			isa = PBXGroup;
+			children = (
+				3B30946914E8A912002300A3 /* com_kaixindev_kxplayer_JNITest.h */,
+				3B86B56814E2475200367467 /* boot.c */,
+				3B86B56914E2475200367467 /* com_kaixindev_kxplayer_Agent.c */,
+				3B86B56A14E2475200367467 /* com_kaixindev_kxplayer_Agent.h */,
+				3B86B56B14E2475200367467 /* com_kaixindev_kxplayer_Device.c */,
+				3B86B56C14E2475200367467 /* com_kaixindev_kxplayer_Device.h */,
+				3B86B57014E26BCD00367467 /* boot.h */,
+				3B30946B14E8A95E002300A3 /* com_kaixindev_kxplayer_JNITest.c */,
+			);
+			name = jni;
+			sourceTree = "<group>";
+		};
+		3B9F901014DFB428007CC38B /* src */ = {
+			isa = PBXGroup;
+			children = (
+				3B86B56514E2399B00367467 /* device_android.c */,
+				3B86B56314E212FC00367467 /* jni */,
+				3B9F901514DFB554007CC38B /* player.c */,
+				3B9F901714DFB6B7007CC38B /* agent.c */,
+				3B9F901C14DFD9EE007CC38B /* device_SDL.c */,
+				3B9F901114DFB430007CC38B /* api */,
+				3B9F902014DFDDF4007CC38B /* device.h */,
+				3B86B56714E244D200367467 /* android.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		3B9F901114DFB430007CC38B /* api */ = {
+			isa = PBXGroup;
+			children = (
+				3B9F901914DFB6DD007CC38B /* kxplayer */,
+			);
+			name = api;
+			sourceTree = "<group>";
+		};
+		3B9F901914DFB6DD007CC38B /* kxplayer */ = {
+			isa = PBXGroup;
+			children = (
+				3B9F901A14DFB6ED007CC38B /* agent.h */,
+				3B9F901B14DFB6ED007CC38B /* player.h */,
+				3B9F901E14DFDA18007CC38B /* device.h */,
+				3B9F902314DFDE9A007CC38B /* config.h */,
+			);
+			name = kxplayer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3B0B1C4D14D8D4C5005294E6 /* KaixinPlayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B0B1C6A14D8D4C5005294E6 /* Build configuration list for PBXNativeTarget "KaixinPlayer" */;
+			buildPhases = (
+				3B0B1C4A14D8D4C5005294E6 /* Sources */,
+				3B0B1C4B14D8D4C5005294E6 /* Frameworks */,
+				3B0B1C4C14D8D4C5005294E6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KaixinPlayer;
+			productName = KaixinPlayer;
+			productReference = 3B0B1C4E14D8D4C5005294E6 /* KaixinPlayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3B0B1C4314D8D46D005294E6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = 3B0B1C4614D8D46D005294E6 /* Build configuration list for PBXProject "KaixinPlayer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 3B0B1C4114D8D46D005294E6;
+			productRefGroup = 3B0B1C4F14D8D4C5005294E6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3B0B1C4D14D8D4C5005294E6 /* KaixinPlayer */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3B0B1C4C14D8D4C5005294E6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B0B1C5D14D8D4C5005294E6 /* InfoPlist.strings in Resources */,
+				3B0B1C6314D8D4C5005294E6 /* Credits.rtf in Resources */,
+				3B0B1C6914D8D4C5005294E6 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3B0B1C4A14D8D4C5005294E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3B0B1C5F14D8D4C5005294E6 /* main.m in Sources */,
+				3B9F901614DFB554007CC38B /* player.c in Sources */,
+				3B9F901814DFB6B7007CC38B /* agent.c in Sources */,
+				3B9F901D14DFD9EE007CC38B /* device_SDL.c in Sources */,
+				3B9F901F14DFDA18007CC38B /* device.h in Sources */,
+				3B86B56614E2399C00367467 /* device_android.c in Sources */,
+				3B86B56D14E2475200367467 /* boot.c in Sources */,
+				3B86B56E14E2475200367467 /* com_kaixindev_kxplayer_Agent.c in Sources */,
+				3B86B56F14E2475200367467 /* com_kaixindev_kxplayer_Device.c in Sources */,
+				3B30946C14E8A95E002300A3 /* com_kaixindev_kxplayer_JNITest.c in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		3B0B1C5B14D8D4C5005294E6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B0B1C5C14D8D4C5005294E6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		3B0B1C6114D8D4C5005294E6 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B0B1C6214D8D4C5005294E6 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		3B0B1C6714D8D4C5005294E6 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3B0B1C6814D8D4C5005294E6 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3B0B1C4814D8D46D005294E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/RadioPlayer/build/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/Users/kaixin/Work/kaixin.dev/osapi/DerivedData/osapi/Build/Products/Debug,
+					/Users/kaixin/Work/RadioPlayer/build/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lSDL",
+					"-lSDLmain",
+					"-losapi",
+					"-lavformat",
+					"-lavcodec",
+					"-lao",
+					"-lportaudio",
+				);
+				PRELINK_LIBS = "";
+			};
+			name = Debug;
+		};
+		3B0B1C4914D8D46D005294E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/RadioPlayer/build/include,
+				);
+				LIBRARY_SEARCH_PATHS = (
+					/Users/kaixin/Work/kaixin.dev/osapi/DerivedData/osapi/Build/Products/Release,
+					/Users/kaixin/Work/RadioPlayer/build/lib,
+				);
+				OTHER_LDFLAGS = (
+					"-lSDL",
+					"-lSDLmain",
+					"-losapi",
+					"-lavformat",
+					"-lavcodec",
+					"-lao",
+					"-lportaudio",
+				);
+				PRELINK_LIBS = "";
+			};
+			name = Release;
+		};
+		3B0B1C6B14D8D4C5005294E6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KaixinPlayer/KaixinPlayer-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/RadioPlayer/build/include,
+				);
+				INFOPLIST_FILE = "KaixinPlayer/KaixinPlayer-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = (
+					"-lbz2",
+					"-lz",
+					"-lSDLmain",
+					"-lSDL",
+					"-lavutil",
+					"-losapi",
+					"-lavformat",
+					"-lavcodec",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		3B0B1C6C14D8D4C5005294E6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = NO;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "KaixinPlayer/KaixinPlayer-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = (
+					/Users/kaixin/Work/kaixin.dev/osapi/src/api,
+					/Users/kaixin/Work/RadioPlayer/build/include,
+				);
+				INFOPLIST_FILE = "KaixinPlayer/KaixinPlayer-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_LDFLAGS = (
+					"-lbz2",
+					"-lz",
+					"-lSDLmain",
+					"-lSDL",
+					"-lavutil",
+					"-losapi",
+					"-lavformat",
+					"-lavcodec",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B0B1C4614D8D46D005294E6 /* Build configuration list for PBXProject "KaixinPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B0B1C4814D8D46D005294E6 /* Debug */,
+				3B0B1C4914D8D46D005294E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3B0B1C6A14D8D4C5005294E6 /* Build configuration list for PBXNativeTarget "KaixinPlayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3B0B1C6B14D8D4C5005294E6 /* Debug */,
+				3B0B1C6C14D8D4C5005294E6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3B0B1C4314D8D46D005294E6 /* Project object */;
+}
