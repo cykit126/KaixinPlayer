@@ -1,12 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TabHost xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/tabhost"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <TextView
+    android:layout_height="fill_parent">
+    <RelativeLayout
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/hello" />
-
-</LinearLayout>
+        android:layout_height="fill_parent"
+        android:padding="5dp">
+        <TabWidget
+            android:id="@android:id/tabs"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" />
+        <RelativeLayout android:id="@+id/player_control"
+            android:orientation="horizontal"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent" 
+            android:layout_alignParentBottom="true">
+			<Button android:id="@+id/player_control_start" 
+			    android:layout_width="50dp"
+			    android:layout_height="wrap_content"
+			    android:text="@string/player_control_start" />
+			<Button android:id="@+id/player_control_pause"
+			    android:layout_toRightOf="@id/player_control_start"
+			    android:layout_width="50dp"
+			    android:layout_height="wrap_content"
+			    android:text="@string/player_control_pause" />
+			<ProgressBar android:id="@+id/loading" 
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:indeterminate="true"
+			    android:layout_alignParentRight="true" />
+        </RelativeLayout>
+		<FrameLayout
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@android:id/tabs"
+            android:layout_above="@id/player_control"
+            android:padding="5dp" />
+    </RelativeLayout>
+</TabHost>

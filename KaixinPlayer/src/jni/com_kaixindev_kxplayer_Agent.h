@@ -19,30 +19,21 @@ extern "C" {
 #define com_kaixindev_kxplayer_Agent_STATE_PAUSED 4L
 #undef com_kaixindev_kxplayer_Agent_STATE_ABORTED
 #define com_kaixindev_kxplayer_Agent_STATE_ABORTED 5L
-
 /*
  * Class:     com_kaixindev_kxplayer_Agent
  * Method:    create
- * Signature: (Lcom/kaixindev/kxplayer/Agent/Option;)Lcom/kaixindev/kxplayer/Agent;
+ * Signature: (Lcom/kaixindev/kxplayer/Agent/OnStartListener;Lcom/kaixindev/kxplayer/Agent/OnReceiveListener;Lcom/kaixindev/kxplayer/Agent/OnFinishListener;)Lcom/kaixindev/kxplayer/Agent;
  */
 JNIEXPORT jobject JNICALL Java_com_kaixindev_kxplayer_Agent_create
-  (JNIEnv *, jclass);
+  (JNIEnv *, jclass, jobject, jobject, jobject);
 
 /*
  * Class:     com_kaixindev_kxplayer_Agent
  * Method:    open
- * Signature: (Ljava/lang/String;Lcom/kaixindev/kxplayer/AVContext;)I
+ * Signature: (Ljava/lang/String;)I
  */
 JNIEXPORT jint JNICALL Java_com_kaixindev_kxplayer_Agent_open
-  (JNIEnv *, jobject, jstring, jobject);
-
-/*
- * Class:     com_kaixindev_kxplayer_Agent
- * Method:    start
- * Signature: ()I
- */
-JNIEXPORT jint JNICALL Java_com_kaixindev_kxplayer_Agent_start
-  (JNIEnv *, jobject, jobject rec_listener, jobject fin_listener);
+  (JNIEnv *, jobject, jstring);
 
 /*
  * Class:     com_kaixindev_kxplayer_Agent
@@ -70,55 +61,28 @@ JNIEXPORT jint JNICALL Java_com_kaixindev_kxplayer_Agent_abort
 
 /*
  * Class:     com_kaixindev_kxplayer_Agent
+ * Method:    stop
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_com_kaixindev_kxplayer_Agent_stop
+  (JNIEnv *, jobject);
+
+/*
+ * Class:     com_kaixindev_kxplayer_Agent
  * Method:    getState
  * Signature: ()I
  */
 JNIEXPORT jint JNICALL Java_com_kaixindev_kxplayer_Agent_getState
   (JNIEnv *, jobject);
-    
-    
+
 /*
  * Class:     com_kaixindev_kxplayer_Agent
  * Method:    release
- * Signature: ()V
+ * Signature: ()I
  */
-JNIEXPORT void JNICALL Java_com_kaixindev_kxplayer_Agent_release
-(JNIEnv *, jobject);
+JNIEXPORT jint JNICALL Java_com_kaixindev_kxplayer_Agent_release
+  (JNIEnv *, jobject);
 
-
-#ifdef __cplusplus
-}
-#endif
-#endif
-/* Header for class com_kaixindev_kxplayer_Agent_OnFinishListener */
-
-#ifndef _Included_com_kaixindev_kxplayer_Agent_OnFinishListener
-#define _Included_com_kaixindev_kxplayer_Agent_OnFinishListener
-#ifdef __cplusplus
-extern "C" {
-#endif
-#ifdef __cplusplus
-}
-#endif
-#endif
-/* Header for class com_kaixindev_kxplayer_Agent_OnReceiveListener */
-
-#ifndef _Included_com_kaixindev_kxplayer_Agent_OnReceiveListener
-#define _Included_com_kaixindev_kxplayer_Agent_OnReceiveListener
-#ifdef __cplusplus
-extern "C" {
-#endif
-#ifdef __cplusplus
-}
-#endif
-#endif
-/* Header for class com_kaixindev_kxplayer_Agent_Option */
-
-#ifndef _Included_com_kaixindev_kxplayer_Agent_Option
-#define _Included_com_kaixindev_kxplayer_Agent_Option
-#ifdef __cplusplus
-extern "C" {
-#endif
 #ifdef __cplusplus
 }
 #endif

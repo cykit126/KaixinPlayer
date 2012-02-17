@@ -10,6 +10,10 @@ public class Agent {
 	
 	private int mPtrNativeDev = 0;
 	
+	public interface OnStartListener {
+		public int onStart(AVContext context);
+	}
+	
 	public interface OnReceiveListener {
 		public void onReceive(byte[] data);
 	}
@@ -22,12 +26,14 @@ public class Agent {
 		release();
 	}
 	
-	native public static Agent create();
-	native public int open(String uri, AVContext context);
-	native public int start(OnReceiveListener recListener, OnFinishListener finListener);
+	native public static Agent create(OnStartListener startListener, 
+			OnReceiveListener recListener, 
+			OnFinishListener finListener);
+	native public int open(String uri);
 	native public int pause();
 	native public int resume();
 	native public int abort();
+	native public int stop();
 	native public int getState();
 	native public int release();
 }

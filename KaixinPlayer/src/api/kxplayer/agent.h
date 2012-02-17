@@ -23,6 +23,7 @@ struct kxplayer_avcontext {
 };
 
 struct kxplayer_agent_option {
+    int (*start_callback)(struct kxplayer_avcontext* context, void* userdata);
     void (*receive_callback)(void* data, os_size size, void* userdata);
     void (*finish_callback)(void* userdata);
     void* userdata;
@@ -31,13 +32,13 @@ struct kxplayer_agent;
 
 extern struct kxplayer_agent* kxplayer_agent_create(const struct kxplayer_agent_option* option);
 extern void kxplayer_agent_release(struct kxplayer_agent* agent);
+
 extern int kxplayer_agent_open(struct kxplayer_agent* agent, 
-                               const char* uri, 
-                               struct kxplayer_avcontext* context);
-extern int kxplayer_agent_start(struct kxplayer_agent* agent);
+                               const char* uri);
 extern int kxplayer_agent_pause(struct kxplayer_agent* agent);
 extern int kxplayer_agent_resume(struct kxplayer_agent* agent);
 extern int kxplayer_agent_abort(struct kxplayer_agent* agent);
 extern int kxplayer_agent_getstate(struct kxplayer_agent* agent);
+extern int kxplayer_agent_stop(struct kxplayer_agent* agent);
 
 #endif

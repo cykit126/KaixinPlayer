@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, KaixinPlayerAndroidActivity!</string>
-    <string name="app_name">KaixinPlayerAndroid</string>
+    <string name="app_name">优视调频</string>
+    <string name="tab_recomm">推荐</string>
+    <string name="tab_favorites">收藏</string>
+    <string name="tab_settings">设置</string>
+    <string name="tab_categories">列表</string>
+    <string name="player_control_start">&gt;</string>
+    <string name="player_control_pause">||</string>
+    <string name="player_control_stop">[ ]</string>
 
 </resources>

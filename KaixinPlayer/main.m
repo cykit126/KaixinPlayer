@@ -17,31 +17,59 @@
 #define HTTP_MP3    "http://zhangmenshiting2.baidu.com/data2/music/13729339/13729339.mp3?xcode=7145d876f0cf755b7773641246fea1a0&mid=0.08626986349644"
 #define HTTP_WMA    "http://www.liming2009.com/108/music/ruguonishiwodechuanshuo.wma"
 
+#include <osapi/log.h>
 #include <osapi/thread.h>
-static struct os_thread_event* g_wait = NULL;
+#include <osapi/system.h>
+
+static int init(void) {
+    
+    return 0;
+}
+
+static int start(struct kxplayer_avcontext* context, void* userdata) {
+    OS_LOG(os_log_debug, "start callback.");
+    return 0;
+}
+
+static void receive(void* data, os_size size, void* userdata) {
+    OS_LOG(os_log_debug, "receive data.");
+}
 
 int main(int argc, char *argv[])
 {
-    g_wait = os_thread_event_create();
-    
     if (kxplayer_initialize() != 0) {
-        fprintf(stderr, "failed to initialize kaixin player.\n");
+        OS_LOG(os_log_error, "unable to initialize kxplayer.");
         return -1;
     }
-     
-    if (kxplayer_play(HTTP_WMA) != 0) {
-        fprintf(stderr, "unable to play %s\n", HTTP_WMA);
-        goto err1;
+    os_log_setlevel(os_log_trace);
+    struct os_log_backend* console = os_log_backend_create(os_log_console_interface(), NULL);
+    os_log_add_backend(console);
+
+    struct kxplayer_agent_option option;
+    option.start_callback = start;
+    option.receive_callback = receive;
+    option.finish_callback = NULL;
+    option.userdata = NULL;
+    struct kxplayer_agent* agent = kxplayer_agent_create(&option);
+    if (agent == NULL) {
+        OS_LOG(os_log_error, "unable to create agent.");
+        return -1;
     }
-    os_thread_event_wait(g_wait);
     
-    os_thread_event_release(g_wait);
+    if (kxplayer_agent_open(agent, RTSP_URL) != 0) {
+        OS_LOG(os_log_error, "unable to open uri %s.", RTSP_URL);
+        return -1;
+    }
+    
+    os_sleep(5000);
+    kxplayer_agent_open(agent, MP3_FILE);
+    os_sleep(999999);
+    
+    kxplayer_agent_stop(agent);
+    
     kxplayer_terminate();
-    fprintf(stdout, "Player quit.");
+    
     return 0;
-    
-err1:
-    kxplayer_terminate();
 }
 
 
