@@ -1,122 +1,170 @@
 <channels type="com.kaixindev.kxplayer.Channel[]">
+	<item>
+		<areaId type="String">2001</areaId>
+		<uri type="String">/data/data/com.kaixindev.kxplayer/app_appdata/legend.mp3</uri>
+		<name type="com.kaixindev.core.I18NString">
+			<zh type="String">传奇</zh>
+			<en type="String">Legend</en>
+		</name>
+	</item>
     <item>
+        <areaId type="String">2001</areaId>
         <uri type="String">http://211.89.225.136/cnr003</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Sound of Music</en>
+            <zh type="String">音乐之声</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2036</areaId>
         <uri type="String">rtsp://a17.l211053182.c2110.a.lm.akamaistream.net/D/17/2110/v0001/reflector:53182</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">VOA_Chinese_radio</en>
+            <zh type="String">美国之音中国频道</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2034</areaId>
         <uri type="String">rtsp://202.153.106.13/cr2</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Hongkong Chiza 903</en>
+            <zh type="String">香港叱咤903</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2002</areaId>
         <uri type="String">rtsp://alive.rbc.cn/fm974</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Beijing Music</en>
+            <zh type="String">北京音乐广播</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2034</areaId>
         <uri type="String">http://202.177.192.111/radio2</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Hongkong Radio 2</en>
+            <zh type="String">香港电台二台</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2003</areaId>
         <uri type="String">mms://218.1.74.230/dg101</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">East Canton Music - City 101</en>
+            <zh type="String">东广音乐-动感101</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2034</areaId>
         <uri type="String">rtsp://202.153.106.13/cr1</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Hongkong Leiting 881</en>
+            <zh type="String">香港雷霆881</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2034</areaId>
         <uri type="String">http://202.177.192.111/radio1</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Hongkong Radio 1</en>
+            <zh type="String">香港电台一台</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2033</areaId>
         <uri type="String">http://bcr.media.hinet.net/RA000042</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">KissRadio Music station</en>
+            <zh type="String">KissRadio音乐台</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2004</areaId>
         <uri type="String">mms://218.69.250.8/live9</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Tianjin crosstalk Radio</en>
+            <zh type="String">天津相声广播</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2001</areaId>
         <uri type="String">rtsp://enmms.chinabroadcast.cn/fm91.5</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">CRI Easy FM</en>
+            <zh type="String">CRI轻松调频</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2036</areaId>
         <uri type="String">http://a466.l3760630465.c37606.n.lm.akamaistream.net/D/466/37606/v0001/reflector:30465</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">U.S. CNN Radio</en>
+            <zh type="String">美国CNN广播</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2036</areaId>
         <uri type="String">http://a99.l211053706.c2110.g.lm.akamaistream.net/D/99/2110/v0001/reflector:53706</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">MUSIC MIX</en>
+            <zh type="String">MUSIC MIX</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2033</areaId>
         <uri type="String">http://bcr.media.hinet.net/RA000061</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Taibei Music Radio</en>
+            <zh type="String">台北之音-音乐</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2001</areaId>
         <uri type="String">rtsp://live.cri.cn/oldies/</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">CRI Oldies</en>
+            <zh type="String">CRI怀旧金曲</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2033</areaId>
         <uri type="String">http://bcr.media.hinet.net/RA000072</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">UFO Radio</en>
+            <zh type="String">飞碟电台</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2002</areaId>
         <uri type="String">rtsp://alive.rbc.cn/fm1039</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Beijing Traffic</en>
+            <zh type="String">北京交通广播</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2003</areaId>
         <uri type="String">mms://218.1.74.230/dycj</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">Shanghai Economy No1</en>
+            <zh type="String">上海第一财经</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">1001</areaId>
         <uri type="String">http://211.89.225.136/cnr002</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">China Business Radio</en>
+            <zh type="String">经济之声</zh>
         </name>
     </item>
     <item>
+        <areaId type="String">2001</areaId>
         <uri type="String">rtsp://live.hitfm.cn/fm887</uri>
         <name type="com.kaixindev.core.I18NString">
             <en type="String">CRI HIT FM</en>
+            <zh type="String">CRI Hit Fm</zh>
         </name>
     </item>
 </channels>

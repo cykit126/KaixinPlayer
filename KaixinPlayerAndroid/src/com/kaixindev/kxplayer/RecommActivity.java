@@ -1,6 +1,7 @@
 package com.kaixindev.kxplayer;
 
 import java.io.InputStream;
+import java.util.Locale;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -45,6 +46,7 @@ public class RecommActivity extends ListTabActivity implements AdapterView.OnIte
 
 		Intent intent = new Intent(PlayerService.START_PLAYER);
 		intent.putExtra(PlayerService.PROPERTY_URI, channel.uri);
+		intent.putExtra(PlayerService.PROPERTY_NAME, channel.name.get(Locale.getDefault().toString()));
 		intent.putExtra(PlayerService.PROPERTY_RESTART, true);
 		startService(intent);
 		

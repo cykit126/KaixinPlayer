@@ -8,6 +8,10 @@ public class Agent {
 	public static final int STATE_PAUSED 			= 4;
 	public static final int STATE_ABORTED 			= 5;
 	
+	public static final int STATUS_OK = 0;
+	public static final int STATUS_PAUSED = 1;
+	public static final int STATUS_ERROR = 2;
+	
 	private int mPtrNativeDev = 0;
 	
 	public interface OnStartListener {
@@ -19,7 +23,7 @@ public class Agent {
 	}
 	
 	public interface OnFinishListener {
-		public void onFinish();
+		public void onFinish(int status);
 	}
 	
 	public void finalize() {

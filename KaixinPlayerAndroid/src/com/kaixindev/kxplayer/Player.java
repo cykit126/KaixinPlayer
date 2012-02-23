@@ -9,13 +9,14 @@ import android.util.Log;
 
 import com.kaixindev.core.StringUtil;
 
-public class Player implements Agent.OnStartListener, Agent.OnReceiveListener {
+public class Player implements Agent.OnStartListener, Agent.OnReceiveListener, Agent.OnFinishListener {
 	public final String LOGTAG = "Player";
 	
 	public static final int STATE_IDLE = 1;
 	public static final int STATE_OPEN = 2;
 	public static final int STATE_PLAYING = 3;
 	public static final int STATE_PAUSED = 4;
+	public static final int STATE_ERROR = 5;
 	
 	private int mState = STATE_IDLE;
 	private final static Object mLock = new Object();
@@ -23,9 +24,10 @@ public class Player implements Agent.OnStartListener, Agent.OnReceiveListener {
 	private AudioTrack mAudioTrack;
 	private Agent mAgent;
 	private Context mContext;
+	private String mProgName;
 	
 	private Player(Context context) {
-		mAgent = Agent.create(this, this, null);
+		mAgent = Agent.create(this, this, this);
 		mContext = context;
 	}
 	
@@ -39,19 +41,21 @@ public class Player implements Agent.OnStartListener, Agent.OnReceiveListener {
 	
 	synchronized public void setState(int state) {
 		mState = state;
+		notify(state);
 	}
 	
-	synchronized public boolean play(String uri) {
+	synchronized public boolean play(String uri, String name) {
 		if (StringUtil.isEmpty(uri)) {
 			Log.e(LOGTAG, "uri is empty.");
 			return false;
 		}
 		abort();
+		mProgName = name;
 		if (mAgent.open(uri) == 0) {
 			setState(STATE_OPEN);
 			return true;
 		} else {
-			setState(STATE_IDLE);
+			setState(STATE_ERROR);
 			return false;
 		}
 	}
@@ -112,16 +116,11 @@ public class Player implements Agent.OnStartListener, Agent.OnReceiveListener {
 				bufferSize,
 				AudioTrack.MODE_STREAM);
         mAudioTrack.play();
-        setState(STATE_PLAYING);
-        sendUpdateControlNotice();
+        setState(STATE_PLAYING);      
+        
         return 0;
 	}
-	
-	synchronized private void sendUpdateControlNotice() {
-		Intent notice = new Intent(KaixinPlayerAndroidActivity.UPDATE_PLAYER_CONTROL);
-		mContext.sendBroadcast(notice);
-	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	
 	private static Player mInstance;
@@ -133,5 +132,17 @@ public class Player implements Agent.OnStartListener, Agent.OnReceiveListener {
 			}
 			return mInstance;
 		}
+	}
+
+	@Override
+	public void onFinish(int status) {
+		setState(status == Agent.STATUS_ERROR ? Player.STATE_ERROR : Player.STATE_IDLE);
+	}
+	
+	public void notify(int status) {
+		Intent intent = new Intent(PlayerService.PLAYER_NOTICE);
+		intent.putExtra(PlayerService.PROPERTY_STATE, status);
+		intent.putExtra(PlayerService.PROPERTY_NAME, mProgName);
+		mContext.sendBroadcast(intent);
 	}
 }

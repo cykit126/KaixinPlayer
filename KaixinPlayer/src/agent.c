@@ -5,6 +5,7 @@
 #include <osapi/log.h>
 
 #include <libavformat/avformat.h>
+#include <libavutil/error.h>
 
 #include "api/kxplayer/agent.h"
 #include "api/kxplayer/device.h"
@@ -64,6 +65,8 @@ static os_intptr agent_threadproc(void* data) {
          * open stream 
          */
         
+        int status = kxplayer_agent_status_ok;
+        
         OS_LOG(os_log_debug, "open stream");
         os_thread_mutex_lock(agent->lock);
         if (os_ringbuf_isempty(agent->jobs)) {
@@ -83,12 +86,14 @@ static os_intptr agent_threadproc(void* data) {
             OS_LOG(os_log_error, "error: %d, unable to open %s.", ret, job.uri);
             os_free(job.uri);
             job.uri = NULL;
-            goto start;
+            status = kxplayer_agent_status_error;
+            goto err0;
         }
         
         /* Retrieve stream information */
         if(avformat_find_stream_info(format_ctx , NULL) < 0) {
             OS_LOG(os_log_error, "unable to find stream info.");
+            status = kxplayer_agent_status_error;
             goto err1; // Couldn't find stream information
         }
         
@@ -102,6 +107,7 @@ static os_intptr agent_threadproc(void* data) {
         }
         if(audio_stream==-1) {
             OS_LOG(os_log_error, "no audio stream found.\n");
+            status = kxplayer_agent_status_error;
             goto err1;
         }
         
@@ -112,6 +118,7 @@ static os_intptr agent_threadproc(void* data) {
         aCodec = avcodec_find_decoder(aCodecCtx->codec_id);
         if(!aCodec) {
             OS_LOG(os_log_error, "Unsupported codec!\n");
+            status = kxplayer_agent_status_error;
             goto err1;
         }
         
@@ -123,11 +130,13 @@ static os_intptr agent_threadproc(void* data) {
         context.audio_channels = aCodecCtx->channels;
         context.has_video = 0;
         if (option->start_callback != NULL && option->start_callback(&context, option->userdata)!=0) {
+            status = kxplayer_agent_status_error;
             goto err1;
         }
         
         if (avcodec_open2(aCodecCtx, aCodec, NULL) != 0) {
             OS_LOG(os_log_error, "unable to open avcodec.\n");
+            status = kxplayer_agent_status_error;
             goto err1;
         }
         
@@ -145,6 +154,7 @@ static os_intptr agent_threadproc(void* data) {
         AVFrame* frame = avcodec_alloc_frame();
         if (frame == NULL) {
             OS_LOG(os_log_error, "unable to alloc frame memory.");
+            status = kxplayer_agent_status_error;
             goto err1;
         }
         
@@ -155,6 +165,7 @@ static os_intptr agent_threadproc(void* data) {
             int state = kxplayer_agent_getstate(agent);
             if (state == kxplayer_agent_state_aborted) {
                 OS_LOG(os_log_debug, "abort\n");
+                status = kxplayer_agent_status_aborted;
                 break;
             } else if (state == kxplayer_agent_state_paused) {
                 OS_ASSERT_DONT_STOP(os_thread_event_wait(agent->read_wait)==0);
@@ -166,6 +177,7 @@ static os_intptr agent_threadproc(void* data) {
             int ret = av_read_frame(format_ctx, &packet); 
             if (ret < 0) {
                 OS_LOG(os_log_debug, "failed to read frame.(%d)\n", ret);
+                status = (ret == AVERROR_EOF) ? kxplayer_agent_status_ok : kxplayer_agent_status_error;
                 goto err1;
             }
             avcodec_get_frame_defaults(frame);
@@ -188,6 +200,7 @@ static os_intptr agent_threadproc(void* data) {
                         if (state == kxplayer_agent_state_aborted) {
                             OS_LOG(os_log_info, "aborted");
                             av_free_packet(&packet);
+                            status = kxplayer_agent_status_aborted;
                             break;
                         } else if (state == kxplayer_agent_state_paused) {
                             OS_ASSERT_DONT_STOP(os_thread_event_wait(agent->read_wait)==0);
@@ -198,6 +211,8 @@ static os_intptr agent_threadproc(void* data) {
                     }
                 } else {
                     OS_LOG(os_log_error, "error.\n");
+                    status = kxplayer_agent_status_error;
+                    /* status = kxplayer_agent_status_error; */
                     /* error occured */
                 }
             }
@@ -213,13 +228,17 @@ static os_intptr agent_threadproc(void* data) {
         os_thread_mutex_unlock(agent->lock);
         
         if (option->finish_callback != NULL) {
-            option->finish_callback(option->userdata);
+            option->finish_callback(status, option->userdata);
         }
         
         goto start;
     err1:
         avformat_close_input(&format_ctx);
         format_ctx = NULL;
+    err0:
+        if (option->finish_callback != NULL) {
+            option->finish_callback(status, option->userdata);
+        }
     }
     
     return 0;

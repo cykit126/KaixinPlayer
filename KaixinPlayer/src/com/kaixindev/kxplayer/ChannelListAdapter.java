@@ -55,8 +55,7 @@ public class ChannelListAdapter extends BaseAdapter {
 		
 		TextView titleView = (TextView)view.findViewById(R.id.name);
 		Channel channel = (Channel) getItem(position);
-		//titleView.setText(channel.name.get(lang));
-		titleView.setText(channel.name.get("en"));
+		titleView.setText(channel.name.get(lang));
 		
 		return view;
 	}

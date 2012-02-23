@@ -6,12 +6,16 @@ import com.kaixindev.android.service.AsyncService;
 
 public class PlayerService extends AsyncService {
 	
+	public static final String PLAYER_NOTICE = "com.kaixindev.kxplayer.PLAYER_NOTICE";
+	public static final String PROPERTY_STATE = "state";
+	
 	public static final String START_PLAYER = "com.kaixindev.kxplayer.START_PLAYER";
 	public static final String PAUSE_PLAYER = "com.kaixindev.kxplayer.PAUSE_PLAYER";
 	public static final String RESUME_PLAYER = "com.kaixindev.kxplayer.RESUME_PLAYER";
 	public static final String STOP_PLAYER = "com.kaixindev.kxolayer.STOP_PLAYER";
 	public static final String PROPERTY_URI = "uri";
 	public static final String PROPERTY_RESTART = "restart";
+	public static final String PROPERTY_NAME = "name";
 	
 	private static final String __PROPERTY_TIMESTAMP = "__timestamp";
 	

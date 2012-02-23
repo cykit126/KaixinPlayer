@@ -1,25 +1,53 @@
 package com.kaixindev.kxplayer;
 
 import android.app.TabActivity;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.IBinder;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TabHost;
+import android.widget.TextView;
 
-public class KaixinPlayerAndroidActivity extends TabActivity {
+import com.kaixindev.kxplayer.CommonService.CommonServiceBinder;
+
+public class PlayerActivity extends TabActivity {
 	
-	public static final String LOGTAG = "console";
-	public static final String UPDATE_PLAYER_CONTROL = "com.kaixindev.kxplayer.UPDATE_PLAYER_CONTROL";
+	// /data/data/com.kaixindev.kxplayer/app_appdata/legend.mp3
+	
+	public static final String LOGTAG = "KaixinPlayerAndroidActivity";
 	
 	static {
 		System.loadLibrary("kxplayer");
 	}
 	
+	private Handler mHandler = new Handler();
 	private PlayerControlBroadcastrReceiver mPCBReceiver;
+	private CommonService mCommonService;
+	private boolean mBound = false;
+	private ServiceConnection mConn = new ServiceConnection() {
+
+		@Override
+		public void onServiceConnected(ComponentName name, IBinder service) {
+			mCommonService = ((CommonServiceBinder)service).getService();
+			mBound = true;
+			mCommonService.checkUpdate(PlayerActivity.this, mHandler);
+		}
+
+		@Override
+		public void onServiceDisconnected(ComponentName name) {
+			mCommonService = null;
+		}
+		
+	};
 	
     /** Called when the activity is first created. */
     @Override
@@ -69,14 +97,15 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
         btnStart.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				switch (Player.getInstance(KaixinPlayerAndroidActivity.this).getState()) {
+				switch (Player.getInstance(PlayerActivity.this).getState()) {
 				case Player.STATE_IDLE:
 				case Player.STATE_PAUSED:
+				case Player.STATE_ERROR:
 					Intent intent = new Intent(PlayerService.RESUME_PLAYER);
 					startService(intent);
+					setPlayerLoading();
 					break;
 				}
-				setPlayerLoading();
 			}
 		});
         
@@ -84,7 +113,7 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
         btnPause.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				switch (Player.getInstance(KaixinPlayerAndroidActivity.this).getState()) {
+				switch (Player.getInstance(PlayerActivity.this).getState()) {
 				case Player.STATE_OPEN:
 				case Player.STATE_PLAYING:
 					Intent intent = new Intent(PlayerService.PAUSE_PLAYER);
@@ -95,23 +124,19 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
 			}
 		});
         
-        
         setPlayerIdle();
-        /*
-        //String uri = "/data/data/com.kaixindev.kxplayer/app_appdata/legend.mp3";
-        String uri = "rtsp://a17.l211053182.c2110.a.lm.akamaistream.net/D/17/2110/v0001/reflector:53182";
-        //String uri = "http://www.liming2009.com/108/music/ruguonishiwodechuanshuo.wma";
-        Intent intent = new Intent(PlayerService.START_PLAYER);
-        intent.putExtra(PlayerService.PROPERTY_URI, uri);
-        startService(intent);
-        */
+        
+        intent = new Intent(CommonService.ACTION);
+    	if (!bindService(intent, mConn, Context.BIND_AUTO_CREATE)) {
+    		Log.e(LOGTAG, "unable to bind CommonService.");
+    	}
     }
     
     @Override
     public void onResume() {
     	super.onResume();
     	IntentFilter filter = new IntentFilter();
-    	filter.addAction(UPDATE_PLAYER_CONTROL);
+    	filter.addAction(PlayerService.PLAYER_NOTICE);
     	registerReceiver(mPCBReceiver, filter);
     }
     
@@ -121,6 +146,16 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
     	unregisterReceiver(mPCBReceiver);
     }
     
+    @Override
+    public void onDestroy() {
+    	super.onDestroy();
+    	if (mBound) {
+    		unbindService(mConn);
+    		mCommonService = null;
+    		mBound = false;
+    	}
+    }
+    
     public void setPlayerIdle()  {
     	ProgressBar pbLoading = (ProgressBar)findViewById(R.id.loading);
         pbLoading.setVisibility(View.GONE);
@@ -128,6 +163,19 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
         btnResume.setVisibility(View.GONE);
         Button btnPause = (Button)findViewById(R.id.player_control_pause);
         btnPause.setVisibility(View.GONE);
+        TextView displayView = (TextView)findViewById(R.id.player_control_display);
+        displayView.setVisibility(View.GONE);
+    }
+    
+    public void setPlayerError() {
+    	ProgressBar pbLoading = (ProgressBar)findViewById(R.id.loading);
+        pbLoading.setVisibility(View.GONE);
+        Button btnResume = (Button)findViewById(R.id.player_control_start);
+        btnResume.setVisibility(View.GONE);
+        Button btnPause = (Button)findViewById(R.id.player_control_pause);
+        btnPause.setVisibility(View.GONE);
+        TextView displayView = (TextView)findViewById(R.id.player_control_display);
+        displayView.setVisibility(View.VISIBLE);    	
     }
     
     public void setPlayerStarted() {
@@ -137,6 +185,8 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
         btnResume.setVisibility(View.GONE);
         Button btnPause = (Button)findViewById(R.id.player_control_pause);
         btnPause.setVisibility(View.VISIBLE);
+        TextView displayView = (TextView)findViewById(R.id.player_control_display);
+        displayView.setVisibility(View.VISIBLE);
     }
     
     public void setPlayerPaused() {
@@ -145,7 +195,9 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
         Button btnResume = (Button)findViewById(R.id.player_control_start);
         btnResume.setVisibility(View.VISIBLE);
         Button btnPause = (Button)findViewById(R.id.player_control_pause);
-        btnPause.setVisibility(View.GONE);   	
+        btnPause.setVisibility(View.GONE);
+        TextView displayView = (TextView)findViewById(R.id.player_control_display);
+        displayView.setVisibility(View.VISIBLE);
     }
     
     public void setPlayerLoading() {
@@ -154,7 +206,14 @@ public class KaixinPlayerAndroidActivity extends TabActivity {
         Button btnResume = (Button)findViewById(R.id.player_control_start);
         btnResume.setVisibility(View.GONE);
         Button btnPause = (Button)findViewById(R.id.player_control_pause);
-        btnPause.setVisibility(View.VISIBLE);    	
+        btnPause.setVisibility(View.VISIBLE);
+        TextView displayView = (TextView)findViewById(R.id.player_control_display);
+        displayView.setVisibility(View.VISIBLE);
+    }
+    
+    public void updatePlayerDisplay(String content) {
+    	TextView displayView = (TextView)findViewById(R.id.player_control_display);
+    	displayView.setText(content);
     }
 }
 

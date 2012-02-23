@@ -20,21 +20,18 @@ public class PlayerServiceHandler {
 	@IntentHandler(action=PlayerService.STOP_PLAYER)
 	public void stopPlayer(final Intent intent, final Context context, final Object jobArg) {
 		Player.getInstance(mService).stop();
-		sendUpdateControlNotice();
 	}
 	
 	@IntentHandler(action=PlayerService.PAUSE_PLAYER)
 	public void pausePlayer(final Intent intent, final Context context, final Object jobArg) {
 		Player player = Player.getInstance(mService);
 		player.pause();
-		sendUpdateControlNotice();
 	}
 	
 	@IntentHandler(action=PlayerService.RESUME_PLAYER)
 	public void resumePlayer(final Intent intent, final Context context, final Object jobArg) {
 		Player player = Player.getInstance(mService);
 		player.resume();
-		sendUpdateControlNotice();		
 	}
 	
 	@IntentHandler(action=PlayerService.START_PLAYER)
@@ -42,18 +39,10 @@ public class PlayerServiceHandler {
 		String uri = intent.getStringExtra(PlayerService.PROPERTY_URI);
 		if (StringUtil.isEmpty(uri)) {
 			Log.e(LOGTAG, "uri is empty.");
-			sendUpdateControlNotice();
 			return;
 		}
 		
 		Player player = Player.getInstance(mService);
-		player.play(uri);
-		
-		sendUpdateControlNotice();
-	}
-	
-	private void sendUpdateControlNotice() {
-		Intent notice = new Intent(KaixinPlayerAndroidActivity.UPDATE_PLAYER_CONTROL);
-		mService.sendBroadcast(notice);
+		player.play(uri, intent.getStringExtra(PlayerService.PROPERTY_NAME));
 	}
 }

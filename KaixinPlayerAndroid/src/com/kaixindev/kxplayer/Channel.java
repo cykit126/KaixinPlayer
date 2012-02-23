@@ -5,6 +5,9 @@ import com.kaixindev.serialize.Attribute;
 
 public class Channel {
 	@Attribute
+	public String areaId;
+	
+	@Attribute
 	public String uri;
 	
 	@Attribute

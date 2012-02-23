@@ -1,0 +1,254 @@
+<areas type="com.kaixindev.kxplayer.Area[]">
+    <item>
+        <id type="String">﻿2001</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">State</en>
+            <zh type="String">中央</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2002</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Beijing</en>
+            <zh type="String">北京</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2003</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Shanghai</en>
+            <zh type="String">上海</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2004</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Tianjin</en>
+            <zh type="String">天津</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2005</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Hunan</en>
+            <zh type="String">湖南</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2006</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Guangdong</en>
+            <zh type="String">广东</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2007</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Zhejiang</en>
+            <zh type="String">浙江</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2008</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Shandong</en>
+            <zh type="String">山东</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2009</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Hebei</en>
+            <zh type="String">河北</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2010</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Hubei</en>
+            <zh type="String">湖北</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2011</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Xinjiang</en>
+            <zh type="String">新疆</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2012</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Anhui</en>
+            <zh type="String">安徽</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2013</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Jiangsu</en>
+            <zh type="String">江苏</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2014</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Jiangxi</en>
+            <zh type="String">江西</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2015</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Shanxi</en>
+            <zh type="String">山西</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2016</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Henan</en>
+            <zh type="String">河南</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2017</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Guangxi</en>
+            <zh type="String">广西</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2018</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Heilongjiang</en>
+            <zh type="String">黑龙江</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2019</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Liaoning</en>
+            <zh type="String">辽宁</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2020</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Fujian</en>
+            <zh type="String">福建</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2021</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Gansu</en>
+            <zh type="String">甘肃</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2022</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Guizhou</en>
+            <zh type="String">贵州</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2023</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Sichuan</en>
+            <zh type="String">四川</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2024</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Qinghai</en>
+            <zh type="String">青海</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2025</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Shanxi</en>
+            <zh type="String">陕西</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2026</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Jilin</en>
+            <zh type="String">吉林</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2027</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Ningxia</en>
+            <zh type="String">宁夏</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2028</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Hainan</en>
+            <zh type="String">海南</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2029</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Xizang</en>
+            <zh type="String">西藏</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2030</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Neimenggu</en>
+            <zh type="String">内蒙古</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2031</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Yunnan</en>
+            <zh type="String">云南</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2032</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Chongqing</en>
+            <zh type="String">重庆</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2033</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Taiwan</en>
+            <zh type="String">台湾</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2034</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Hongkong</en>
+            <zh type="String">香港</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2035</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">Aomen</en>
+            <zh type="String">澳门</zh>
+        </name>
+    </item>
+    <item>
+        <id type="String">2036</id>
+        <name type="com.kaixindev.core.I18NString">
+            <en type="String">International</en>
+            <zh type="String">国际</zh>
+        </name>
+    </item>
+</areas>

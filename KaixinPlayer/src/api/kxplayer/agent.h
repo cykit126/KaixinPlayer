@@ -22,10 +22,16 @@ struct kxplayer_avcontext {
     int has_video;
 };
 
+enum kxplayer_agent_status {
+    kxplayer_agent_status_ok = 0,
+    kxplayer_agent_status_aborted = 1,
+    kxplayer_agent_status_error = 2,
+};
+
 struct kxplayer_agent_option {
     int (*start_callback)(struct kxplayer_avcontext* context, void* userdata);
     void (*receive_callback)(void* data, os_size size, void* userdata);
-    void (*finish_callback)(void* userdata);
+    void (*finish_callback)(int status, void* userdata);
     void* userdata;
 };
 struct kxplayer_agent;

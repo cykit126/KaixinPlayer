@@ -57,6 +57,7 @@ static int start_callback(struct kxplayer_avcontext* tmpctx, void* userdata) {
     kxplayer_unlock_AgentListener();
     (*env)->DeleteLocalRef(env, context);
     kxplayer_unlock_AVContext_class();
+    (*jvm)->DetachCurrentThread(jvm);
     return ret;
     
 err0:
@@ -71,7 +72,14 @@ static void receive_callback(void* data, os_size size, void* ud) {
     JavaVM* jvm = kxplayer_getjavavm();
     OS_CHECK(jvm!=NULL, ;);
     JNIEnv *env = NULL;
-    (*jvm)->GetEnv(jvm, (void**)&env, JNI_VERSION_1_2);
+    if ((*jvm)->AttachCurrentThread(jvm, &env, NULL) < 0) {
+        OS_LOG(os_log_error, "AttachCurrentThread failed.");
+        return;
+    }
+    if (env == NULL) {
+        OS_LOG(os_log_error, "unable to get JNIEnv.");
+        return;
+    }
     
     struct agent_object* agobj = (struct agent_object*)ud;
     OS_LOG(os_log_debug, "agent object pointer in receive_callback 0x%0X.", agobj);
@@ -93,10 +101,35 @@ static void receive_callback(void* data, os_size size, void* ud) {
         
         (*env)->DeleteLocalRef(env, buffer);
     }
+    
+    (*jvm)->DetachCurrentThread(jvm);
 }
 
-static void on_finish(void* userdata) {
+static void finish_callback(int status, void* userdata) {
+    OS_LOG(os_log_debug, "finish_callback, status:%d.", status);
     
+    JavaVM* jvm = kxplayer_getjavavm();
+    OS_CHECK(jvm!=NULL, ;);
+    JNIEnv *env = NULL;
+    if ((*jvm)->AttachCurrentThread(jvm, &env, NULL) < 0) {
+        OS_LOG(os_log_error, "AttachCurrentThread failed.");
+        return;
+    }
+    if (env == NULL) {
+        OS_LOG(os_log_error, "unable to get JNIEnv.");
+        return;
+    }
+    
+    struct agent_object* agobj = (struct agent_object*)userdata;
+    OS_LOG(os_log_debug, "agent object pointer in finish_callback 0x%0X.", agobj);
+    
+    if (agobj->finish_listener != NULL) {
+        struct AgentListener* agent_listener = kxplayer_lock_AgentListener();
+        (*env)->CallVoidMethod(env, agobj->finish_listener, agent_listener->on_finish, status);
+        kxplayer_unlock_AgentListener(); 
+    }
+    
+    (*jvm)->DetachCurrentThread(jvm);
 }
 
 /*
@@ -121,7 +154,7 @@ JNIEXPORT jobject JNICALL Java_com_kaixindev_kxplayer_Agent_create
     option.userdata = obj;
     option.start_callback = start_callback;
     option.receive_callback = receive_callback;
-    option.finish_callback = NULL;
+    option.finish_callback = finish_callback;
     obj->agent = kxplayer_agent_create(&option);
     if (obj->agent == NULL) {
         OS_LOG(os_log_error, "failed to create kxplayer agent.\n");

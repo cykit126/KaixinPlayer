@@ -134,7 +134,7 @@ static int AgentListener_init(JNIEnv* env) {
         goto err2;
     }
     g_AgentListener.finish_listener = (*env)->NewGlobalRef(env, finish_class);
-    g_AgentListener.on_finish = (*env)->GetMethodID(env, finish_class, "onFinish", "()V");
+    g_AgentListener.on_finish = (*env)->GetMethodID(env, finish_class, "onFinish", "(I)V");
     if (g_AgentListener.on_finish == NULL) {
         OS_LOG(os_log_error, "Agent.OnFinishListener.onFinish not found.");
         goto err3;
@@ -189,9 +189,6 @@ struct AgentListener* kxplayer_lock_AgentListener(void) {
 void kxplayer_unlock_AgentListener(void) {
     os_thread_mutex_unlock(g_AgentListener.lock);
 }
-
-
-/* AVContext end */
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM *jvm, void *reserved) {
     g_AVContext_class.klass = NULL;
