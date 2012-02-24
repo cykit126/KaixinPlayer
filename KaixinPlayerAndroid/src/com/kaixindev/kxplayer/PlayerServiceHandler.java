@@ -7,7 +7,7 @@ import android.util.Log;
 import com.kaixindev.android.service.IntentHandler;
 import com.kaixindev.core.StringUtil;
 
-public class PlayerServiceHandler {
+public class PlayerServiceHandler extends NoProGuardObject {
 	
 	public static final String LOGTAG = "PlayerServiceHandler";
 	

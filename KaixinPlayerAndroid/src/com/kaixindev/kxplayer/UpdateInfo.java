@@ -2,7 +2,7 @@ package com.kaixindev.kxplayer;
 
 import com.kaixindev.serialize.Attribute;
 
-public class UpdateInfo {
+public class UpdateInfo extends NoProGuardObject {
 	@Attribute
 	public int versionCode;
 	

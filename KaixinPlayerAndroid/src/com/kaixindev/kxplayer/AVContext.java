@@ -1,6 +1,6 @@
 package com.kaixindev.kxplayer;
 
-public class AVContext {
+public class AVContext extends NoProGuardObject {
 	public boolean mHasAudio;
 	public int mAudioSampleFormat;
 	public int mAudioSampleRate;

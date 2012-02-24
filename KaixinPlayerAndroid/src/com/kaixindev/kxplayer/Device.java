@@ -1,6 +1,6 @@
 package com.kaixindev.kxplayer;
 
-public class Device {
+public class Device extends NoProGuardObject {
 	public interface OnNoticeListener {
 		public void onNotice(int event);
 	}

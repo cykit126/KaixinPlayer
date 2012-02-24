@@ -4,3 +4,4 @@ kaixinPlayer/src/libs/*
 KaixinPlayerAndroid/libs/*
 KaixinPlayerAndroid/bin/*
 KaixinPlayerAndroid/gen/*
+KaixinPlayerAndroid/proguard/*

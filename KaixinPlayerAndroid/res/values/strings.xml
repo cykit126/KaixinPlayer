@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">优视调频</string>
+    <string name="app_name">悠视调频</string>
     <string name="tab_recomm">推荐</string>
     <string name="tab_favorites">收藏</string>
     <string name="tab_settings">设置</string>

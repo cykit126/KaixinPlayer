@@ -2,6 +2,7 @@ package com.kaixindev.kxplayer;
 
 import android.content.Intent;
 
+import com.kaixindev.android.Log;
 import com.kaixindev.android.service.AsyncService;
 
 public class PlayerService extends AsyncService {
@@ -22,6 +23,7 @@ public class PlayerService extends AsyncService {
 	@Override
 	public void onCreate() {
 		super.onCreate();
+		Log.d("Register handler PlayerServiceHandler.");
 		mIntentDispatcher.registerHandlers(new PlayerServiceHandler(this));
 	}
 

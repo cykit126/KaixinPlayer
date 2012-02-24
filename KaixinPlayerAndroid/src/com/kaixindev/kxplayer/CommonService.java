@@ -3,6 +3,8 @@ package com.kaixindev.kxplayer;
 import java.io.File;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,14 +15,13 @@ import android.app.Service;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.widget.RemoteViews;
 
+import com.flurry.android.FlurryAgent;
 import com.kaixindev.android.Application;
 import com.kaixindev.android.FileSystem;
 import com.kaixindev.android.Log;
@@ -69,28 +70,33 @@ public class CommonService extends Service {
 		            XMLSerializer serializer = new XMLSerializer();
 		            final UpdateInfo info = (UpdateInfo)serializer.unserialize(content);
 			        if (info != null) {
-			        	try {
-							PackageInfo pkgInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-							if (pkgInfo.versionCode < info.versionCode) {
-								handler.post(new Runnable(){
-									@Override
-									public void run() {
-										AlertDialog dialog = new AlertDialog.Builder(activity)
+						int versionCode = Application
+								.getVersionCode(CommonService.this);
+						if (versionCode < info.versionCode) {
+							handler.post(new Runnable() {
+								@Override
+								public void run() {
+									AlertDialog dialog = new AlertDialog.Builder(
+											activity)
 											.setMessage(R.string.comfirm_update)
-											.setPositiveButton(R.string.update_yes, new DialogInterface.OnClickListener() {
-												@Override
-												public void onClick(DialogInterface dialog, int which) {
-													downloadUpdate(info);
-												}
-											})
-											.setNegativeButton(R.string.update_no, null)
+											.setPositiveButton(
+													R.string.update_yes,
+													new DialogInterface.OnClickListener() {
+														@Override
+														public void onClick(
+																DialogInterface dialog,
+																int which) {
+															downloadUpdate(info);
+														}
+													})
+											.setNegativeButton(
+													R.string.update_no, null)
 											.create();
-										dialog.show();
-									}
-								});
-							}
-			        	} catch (NameNotFoundException e) {}
-		            }
+									dialog.show();
+								}
+							});
+						}
+					}
 
 		        }
 		        catch (Exception e) {
@@ -103,6 +109,10 @@ public class CommonService extends Service {
 	}
 	
 	public void downloadUpdate(final UpdateInfo info) {
+		Map<String,String> args = new HashMap<String,String>();
+		args.put("version", info.versionString);
+		args.put("current version", Application.getVersionName(this));
+		FlurryAgent.logEvent(Config.FLURRY_EVENT_UPDATE, args, true);
 		mThreadWorker.pushJob(new Runnable(){
 			@Override
 			public void run() {

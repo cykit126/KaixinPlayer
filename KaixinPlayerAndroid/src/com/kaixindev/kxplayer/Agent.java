@@ -1,6 +1,6 @@
 package com.kaixindev.kxplayer;
 
-public class Agent {
+public class Agent extends NoProGuardObject {
 	public static final int STATE_IDLE 				= 0;
 	public static final int STATE_OPEN 				= 1;
 	public static final int STATE_STARTED 			= 2;

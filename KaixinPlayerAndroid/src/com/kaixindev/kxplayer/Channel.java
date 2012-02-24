@@ -3,7 +3,7 @@ package com.kaixindev.kxplayer;
 import com.kaixindev.core.I18NString;
 import com.kaixindev.serialize.Attribute;
 
-public class Channel {
+public class Channel extends NoProGuardObject {
 	@Attribute
 	public String areaId;
 	

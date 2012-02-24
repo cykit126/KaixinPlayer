@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TabHost;
 import android.widget.TextView;
 
+import com.flurry.android.FlurryAgent;
 import com.kaixindev.kxplayer.CommonService.CommonServiceBinder;
 
 public class PlayerActivity extends TabActivity {
@@ -54,6 +55,8 @@ public class PlayerActivity extends TabActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
+        com.kaixindev.android.Log.ENABLED = true;
         
         mPCBReceiver = new PlayerControlBroadcastrReceiver(this);
         
@@ -154,6 +157,18 @@ public class PlayerActivity extends TabActivity {
     		mCommonService = null;
     		mBound = false;
     	}
+    }
+    
+    @Override
+    public void onStart() {
+    	super.onStart();
+    	FlurryAgent.onStartSession(this, Config.FLURRY_API_KEY);
+    }
+    
+    @Override
+    public void onStop() {
+    	super.onStop();
+    	FlurryAgent.onEndSession(this);
     }
     
     public void setPlayerIdle()  {
